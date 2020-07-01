@@ -35,20 +35,20 @@ class Solution:
         if not nums:
             return -1
         return done(0,len(nums)-1)
-
+    # 只要能分半就能用二分查找
     def other(self, nums: List[int], target: int) -> int:
         left = 0
         right = len(nums)-1
         while left <= right:
             mid = (left+right)//2
             if nums[mid] == target:return mid
-            if mid+1<len(nums) and nums[right] >= nums[mid+1]:
-                if target >= nums[mid+1] and target <= nums[right]:
+            if nums[right] >= nums[mid]:
+                if target >= nums[mid] and target <= nums[right]:
                     left = mid +1
                 else:
                     right = mid -1
             else:
-                if target >= nums[left] and target <= nums[mid-1]:
+                if target >= nums[left] and target <= nums[mid]:
                     right = mid-1
                 else:
                     left = mid+1
@@ -56,4 +56,4 @@ class Solution:
 
 
 s = Solution()
-print(s.other([4,5,6,7,0,1,2],5))
+print(s.other([4,5,6,7,0,1,2],3))
