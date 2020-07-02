@@ -19,22 +19,22 @@ class Solution:
         while left < x:
             t = (left + x) // 2
             if nums[t] == target:
-                if t-1>=left and nums[t-1] != target:
-                    left = t
-                    break
-                x = t-1
+                # if t-1>=left and nums[t-1] != target:
+                #     left = t
+                #     break
+                x = t
             else:
                 left = t+1
         x = mid
         while right > x:
-            t = (right + x) // 2
+            t = (right + x +1) // 2
             if nums[t] == target:
-                if t + 1 <= right and nums[t + 1] != target:
-                    right = t
-                    break
-                x = t + 1
+                # if t + 1 <= right and nums[t + 1] != target:
+                #     right = t
+                #     break
+                x = t
             else:
-                right = t-1
+                right = t - 1
         return [left,right]
 
 s = Solution()
