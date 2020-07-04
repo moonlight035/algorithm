@@ -115,12 +115,13 @@ class Solution:
                 board[e[0]][e[1]] = str(i)
                 if not handle((e[0],e[1],i),back) or not digui(index+1):
                     board[e[0]][e[1]] = '.'
-                    goBack(back,str(i))
+                    goBack(back,i)
                 else:
                     return True
             return False
 
         digui(0)
+
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         length = len(board)
         x = [[None]*length for _ in range(length)]
@@ -144,7 +145,7 @@ class Solution:
                 else:
                     z[(i//3)*3+j//3][temp] = True
         return True
-
+    
 
 s = Solution()
 x =[[".",".","9","7","4","8",".",".","."],
