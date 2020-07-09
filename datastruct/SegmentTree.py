@@ -48,10 +48,12 @@ class SegmentTree:
                 lchild.min += temp.down
                 lchild.max += temp.down
                 lchild.sum += temp.down*(lchild.r - lchild.l+1)
+                lchild.down = temp.down
             if rchild is not None:
                 rchild.min += temp.down
                 rchild.max += temp.down
                 rchild.sum += temp.down*(rchild.r - rchild.l+1)
+                rchild.down = temp.down
             temp.down = 0
 
     def __pushUp(self, start: Node):
@@ -108,15 +110,22 @@ class SegmentTree:
 
 if __name__ == '__main__':
     a = [1,2,3,4,5,6,7,8,9,10]
-    s = SegmentTree(len(a))
+    t = SegmentTree(len(a))
     for i in range(len(a)):
-        s.update(i,a[i])
+        t.update(i,a[i])
     for i in range(len(a)):
-        print(s.getRange(0,i))
-    s.updateRange(3,5,8)
-    print('------------')
+        print(t.getRange(0, i))
+    print('```````````````````````````````````')
     for i in range(len(a)):
-        print(s.getRange(0,i))
+        print(t.getRange(i, len(a) - 1))
+    t.updateRange(0, 3, 8)
+    print('````````````````````````````````````')
+    for i in range(len(a)):
+        print(t.getRange(0, i))
+    print('`````````````````````````````````````````')
+    t.update(6, 8)
+    for i in range(len(a)):
+        print(t.getRange(0, i))
 
 
 
