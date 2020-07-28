@@ -23,14 +23,30 @@ class Solution(object):
         if result[0]=='0':
             result.pop(0)
         return ''.join(result)
-    def other(self, a, b):
-        """
-        :type a: str
-        :type b: str
-        :rtype: str
-        """
-        return bin(int(a,2)+int(b,2))[2:]
-a = [1,2,3,4]
-print(1+int('0'))
+
+
+    def other(self, a: str, b: str) -> str:
+        la = len(a)
+        lb = len(b)
+        res = ['0']*max(la,lb)
+        i,j,next=la-1,lb-1,0
+        while i >= 0 or j >= 0:
+            va = ord(a[i])-48 if i>=0 else 0
+            vb = ord(b[j])-48 if j>=0 else 0
+            v = va + vb + next
+            if v > 1:
+                next = 1
+                v = v%2
+            else:
+                next = 0
+            res[max(i,j)] = str(v)
+            i -= 1
+            j -= 1
+        if next == 1:
+            res.insert(0,'1')
+        return ''.join(res)
+
+s = Solution()
+print(s.other("1010","1011"))
 
 
