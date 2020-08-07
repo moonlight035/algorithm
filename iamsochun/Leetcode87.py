@@ -92,10 +92,10 @@ class Solution:
                 dp[i][j][0] = s1[i] == s2[j]
 
         for ll in range(1,l):
-            for i in range(0,l - ll):
-                for j in range(0, l - ll):
+            for i in range(l - ll):
+                for j in range(l - ll):
                     for k in range(1,ll+1):
-                        if (dp[i][j][k-1] and dp[i+k][j+k][ll+1-k-1]) or (dp[i][j+ll-k][k-1] and dp[i+k][j][ll+1-k-1]):
+                        if (dp[i][j][k-1] and dp[i+k][j+k][ll+1-k-1]) or (dp[i][j+ll-k+1][k-1] and dp[i+k][j][ll+1-k-1]):
                             dp[i][j][ll] = True
                             break
         return dp[0][0][l-1]
@@ -103,5 +103,4 @@ class Solution:
 
 
 s = Solution()
-print(s.another("atzzffqpnwcxhejzjsnpmkmzngneo","acegneonzmkmpnsjzjhxwnpqffzzt"))
-print(s.other("atzzffqpnwcxhejzjsnpmkmzngneo","acegneonzmkmpnsjzjhxwnpqffzzt"))
+print(s.another("great","rgeat"))
