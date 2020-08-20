@@ -1,22 +1,17 @@
-a = 1
-b = [2, 3]
-c = 1
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.lflag = 0
+        self.right = None
+        self.rflag = 0
 
-def func():
-    a = 2
-    print ("in func a:", a)
-    b[0] = 1
-    print ("in func b:", b)
-    global c
-    a = c
-    c = 3
-    print ("in func c:", c)
 
-if __name__ == '__main__':
-    print ("before func a:", a)
-    print ("before func b:", b)
-    print ("before func c:", c)
-    func()
-    print ("after func a:", a)
-    print ("after func b:", b)
-print ("after func c:", c)
+root = TreeNode(5)
+root.left = TreeNode(4)
+root.right = TreeNode(3)
+root.left.left = TreeNode(10)
+root.left.right = TreeNode(12)
+root.right.left = TreeNode(8)
+root.right.right = TreeNode(9)
+makeTree(root)
